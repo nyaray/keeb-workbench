@@ -8,7 +8,11 @@ Download from http://example.com/FIXME.
 
 ## Usage
 
-FIXME: explanation
+Run this to generate `things/mesh-4.scad`:
+
+    $ lein run mesh-4
+
+Maybe we'll build it properly later :shrug:
 
     $ java -jar keeb-workbench-0.1.0-standalone.jar [args]
 
