@@ -9,7 +9,8 @@
   "I don't do a whole lot ... yet."
   [& args]
   (do
-   (let [s (symbol (str "keeb-workbench." (first args) ".core"))]
+   (let* [bench (first args)
+         s (symbol (str "keeb-workbench." bench ".core"))]
      (println (str "pre " *ns*))
      (in-ns s)
      (println (str "post " *ns*))
@@ -19,7 +20,7 @@
      ;(pprint (str assembly))
      (->> assembly
           (write-scad)
-          (spit "things/mesh-4.scad"))
+          (spit (str "things/" bench ".scad"))
      )
    (comment case (first args)
             "mesh-4" (pprint keeb-workbench.mesh-4.core/assembly)
