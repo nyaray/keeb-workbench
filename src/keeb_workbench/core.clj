@@ -6,23 +6,13 @@
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "spits scad into things/BENCH.scad, where bench is the first arg in `lein run`"
   [& args]
-  (do
-   (let* [bench (first args)
+  (let* [bench (first args)
          s (symbol (str "keeb-workbench." bench ".core"))]
-     (println (str "pre " *ns*))
-     (in-ns s)
-     (println (str "post " *ns*))
-     ;(use s)
-     ;(println (ns-map s))
-     ;(pprint (str "var-get: " (var-get 'assembly)))
-     ;(pprint (str assembly))
-     (->> assembly
-          (write-scad)
-          (spit (str "things/" bench ".scad"))
-     )
-   (comment case (first args)
-            "mesh-4" (pprint keeb-workbench.mesh-4.core/assembly)
-            (println "bad arg"))))
+    (in-ns s)
+    (println (str "spitting assembly from " *ns*))
+    (->> assembly
+         (write-scad)
+         (spit (str "things/" bench ".scad")))))
 
